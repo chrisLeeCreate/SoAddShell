@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/CMakeLists.txt",
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/../../../../Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/mips64 --target clean"
+  ],
+  "libraries": {
+    "demo-Debug-mips64": {
+      "artifactName": "demo",
+      "buildCommand": "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/mips64 --target demo",
+      "abi": "mips64",
+      "output": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/cmake/debug/obj/mips64/libdemo.so"
+    }
+  }
+}

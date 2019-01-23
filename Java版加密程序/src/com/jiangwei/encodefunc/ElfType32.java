@@ -7,10 +7,10 @@ public class ElfType32 {
 	public elf32_rel rel;
 	public elf32_rela rela;
 	public ArrayList<Elf32_Sym> symList = new ArrayList<Elf32_Sym>();
-	public elf32_hdr hdr;//elfÍ·²¿ĞÅÏ¢
-	public ArrayList<elf32_phdr> phdrList = new ArrayList<elf32_phdr>();//¿ÉÄÜ»áÓĞ¶à¸ö³ÌĞòÍ·
-	public ArrayList<elf32_shdr> shdrList = new ArrayList<elf32_shdr>();//¿ÉÄÜ»áÓĞ¶à¸ö¶ÎÍ·
-	public ArrayList<elf32_strtb> strtbList = new ArrayList<elf32_strtb>();//¿ÉÄÜ»áÓĞ¶à¸ö×Ö·û´®Öµ
+	public elf32_hdr hdr;//elfÍ·ï¿½ï¿½ï¿½ï¿½Ï¢
+	public ArrayList<elf32_phdr> phdrList = new ArrayList<elf32_phdr>();//ï¿½ï¿½ï¿½Ü»ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·
+	public ArrayList<elf32_shdr> shdrList = new ArrayList<elf32_shdr>();//ï¿½ï¿½ï¿½Ü»ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½Í·
+	public ArrayList<elf32_strtb> strtbList = new ArrayList<elf32_strtb>();//ï¿½ï¿½ï¿½Ü»ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Öµ
 	public ArrayList<elf32_dyn> dynList = new ArrayList<elf32_dyn>();
 	
 	public ElfType32() {
@@ -108,18 +108,18 @@ public class ElfType32 {
 		}
 	}
 	
-	//Bind×Ö¶Î==¡·st_info
+	//Bindï¿½Ö¶ï¿½==ï¿½ï¿½st_info
 	public static final int STB_LOCAL = 0;
 	public static final int STB_GLOBAL = 1;
 	public static final int STB_WEAK = 2;
-	//Type×Ö¶Î==¡·st_other
+	//Typeï¿½Ö¶ï¿½==ï¿½ï¿½st_other
 	public static final int STT_NOTYPE = 0;
 	public static final int STT_OBJECT = 1;
 	public static final int STT_FUNC = 2;
 	public static final int STT_SECTION = 3;
 	public static final int STT_FILE = 4;
 	/**
-	 * ÕâÀïĞèÒª×¢ÒâµÄÊÇ»¹ĞèÒª×öÒ»´Î×ª»¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½Òªï¿½ï¿½Ò»ï¿½ï¿½×ªï¿½ï¿½
 	 *  #define ELF_ST_BIND(x)	((x) >> 4)
 		#define ELF_ST_TYPE(x)	(((unsigned int) x) & 0xf)
 	 */

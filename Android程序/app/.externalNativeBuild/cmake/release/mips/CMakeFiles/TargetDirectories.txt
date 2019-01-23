@@ -1,0 +1,3 @@
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/rebuild_cache.dir
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/edit_cache.dir
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/demo.dir

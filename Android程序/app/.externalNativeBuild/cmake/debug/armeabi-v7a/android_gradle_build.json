@@ -1,0 +1,39 @@
+{
+  "stringTable": {
+    "0": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/armeabi-v7a",
+    "1": "--target=armv7-none-linux-androideabi --gcc-toolchain=/Users/lishaowei/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot -Ddemo_EXPORTS -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=15 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/CMakeLists.txt",
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/../../../../Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "demo-Debug-armeabi-v7a": {
+      "buildCommand": "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target demo",
+      "buildType": "debug",
+      "toolchain": "1702301112",
+      "abi": "armeabi-v7a",
+      "artifactName": "demo",
+      "files": [
+        {
+          "src": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/cpp/demo.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so"
+    }
+  },
+  "toolchains": {
+    "1702301112": {
+      "cppCompilerExecutable": "/Users/lishaowei/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

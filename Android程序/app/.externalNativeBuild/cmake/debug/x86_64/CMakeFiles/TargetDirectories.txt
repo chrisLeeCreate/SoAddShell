@@ -1,0 +1,3 @@
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
+/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/demo.dir

@@ -6,188 +6,188 @@ import com.jiangwei.encodefunc.ElfType32.elf32_phdr;
 import com.jiangwei.encodefunc.ElfType32.elf32_shdr;
 
 public class EncodeFunc {
-	
-	public static String funcName = "Java_com_example_shelldemo2_MainActivity_getString";
-	
-	public static ElfType32 type_32 = new ElfType32();
-	
-	public static void main(String[] args){
-		
-		byte[] fileByteArys = Utils.readFile("so/libdemo.so");
-		if(fileByteArys == null){
-			System.out.println("read file byte failed...");
-			return;
-		}
-		
-		/**
-		 * ÏÈ½âÎösoÎÄ¼þ
-		 * È»ºó³õÊ¼»¯AddSectionÖÐµÄÒ»Ð©ÐÅÏ¢
-		 * ×îºóÔÚAddSection
-		 */
-		parseSo(fileByteArys);
-		
-		encodeFunc(fileByteArys);
-		
-		parseSo(fileByteArys);
-		
-		Utils.saveFile("so/libdemos.so", fileByteArys);
-		
-	}
-	
-	private static void encodeFunc(byte[] fileByteArys){
-		//Ñ°ÕÒDynamic¶ÎµÄÆ«ÒÆÖµºÍ´óÐ¡
-		int dy_offset = 0,dy_size = 0;
-		for(elf32_phdr phdr : type_32.phdrList){
-			if(Utils.byte2Int(phdr.p_type) == ElfType32.PT_DYNAMIC){
-				dy_offset = Utils.byte2Int(phdr.p_offset);
-				dy_size = Utils.byte2Int(phdr.p_filesz);
-			}
-		}
-		System.out.println("dy_size:"+dy_size);
-		int dynSize = 8;
-		int size = dy_size / dynSize;
-		System.out.println("size:"+size);
-		byte[] dest = new byte[dynSize];
-		for(int i=0;i<size;i++){
-			System.arraycopy(fileByteArys, i*dynSize + dy_offset, dest, 0, dynSize);
-			type_32.dynList.add(parseDynamic(dest));
-		}
-		
-		//type_32.printDynList();
-		
-		byte[] symbolStr = null;
-		int strSize=0,strOffset=0;
-		int symbolOffset = 0;
-		int dynHashOffset = 0;
-		int funcIndex = 0;
-		int symbolSize = 16;
-		
-		for(elf32_dyn dyn : type_32.dynList){
-			if(Utils.byte2Int(dyn.d_tag) == ElfType32.DT_HASH){
-				dynHashOffset = Utils.byte2Int(dyn.d_ptr);
-			}else if(Utils.byte2Int(dyn.d_tag) == ElfType32.DT_STRTAB){
-				System.out.println("strtab:"+dyn);
-				strOffset = Utils.byte2Int(dyn.d_ptr);
-			}else if(Utils.byte2Int(dyn.d_tag) == ElfType32.DT_SYMTAB){
-				System.out.println("systab:"+dyn);
-				symbolOffset = Utils.byte2Int(dyn.d_ptr);
-			}else if(Utils.byte2Int(dyn.d_tag) == ElfType32.DT_STRSZ){
-				System.out.println("strsz:"+dyn);
-				strSize = Utils.byte2Int(dyn.d_val);
-			}
-		}
-		
-		symbolStr = Utils.copyBytes(fileByteArys, strOffset, strSize);
-		//´òÓ¡ËùÓÐµÄSymbol Name,×¢ÒâÓÃ0À´½øÐÐ·Ö¸î£¬CÖÐµÄ×Ö·û´®¶¼ÊÇÓÃ0×ö½áÎ²µÄ
-		/*String[] strAry = new String(symbolStr).split(new String(new byte[]{0}));
-		for(String str : strAry){
+
+    public static String funcName = "Java_com_example_shelldemo2_MainActivity_getString";
+
+    public static ElfType32 type_32 = new ElfType32();
+
+    public static void main(String[] args) {
+
+        byte[] fileByteArys = Utils.readFile("so/libdemo.so");
+        if (fileByteArys == null) {
+            System.out.println("read file byte failed...");
+            return;
+        }
+
+        /**
+         * ï¿½È½ï¿½ï¿½ï¿½soï¿½Ä¼ï¿½
+         * È»ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½AddSectionï¿½Ðµï¿½Ò»Ð©ï¿½ï¿½Ï¢
+         * ï¿½ï¿½ï¿½ï¿½ï¿½AddSection
+         */
+        parseSo(fileByteArys);
+
+        encodeFunc(fileByteArys);
+
+        parseSo(fileByteArys);
+
+        Utils.saveFile("so/libdemos.so", fileByteArys);
+
+    }
+
+    private static void encodeFunc(byte[] fileByteArys) {
+        //Ñ°ï¿½ï¿½Dynamicï¿½Îµï¿½Æ«ï¿½ï¿½Öµï¿½Í´ï¿½Ð¡
+        int dy_offset = 0, dy_size = 0;
+        for (elf32_phdr phdr : type_32.phdrList) {
+            if (Utils.byte2Int(phdr.p_type) == ElfType32.PT_DYNAMIC) {
+                dy_offset = Utils.byte2Int(phdr.p_offset);
+                dy_size = Utils.byte2Int(phdr.p_filesz);
+            }
+        }
+        System.out.println("dy_size:" + dy_size);
+        int dynSize = 8;
+        int size = dy_size / dynSize;
+        System.out.println("size:" + size);
+        byte[] dest = new byte[dynSize];
+        for (int i = 0; i < size; i++) {
+            System.arraycopy(fileByteArys, i * dynSize + dy_offset, dest, 0, dynSize);
+            type_32.dynList.add(parseDynamic(dest));
+        }
+
+        //type_32.printDynList();
+
+        byte[] symbolStr = null;
+        int strSize = 0, strOffset = 0;
+        int symbolOffset = 0;
+        int dynHashOffset = 0;
+        int funcIndex = 0;
+        int symbolSize = 16;
+
+        for (elf32_dyn dyn : type_32.dynList) {
+            if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_HASH) {
+                dynHashOffset = Utils.byte2Int(dyn.d_ptr);
+            } else if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_STRTAB) {
+                System.out.println("strtab:" + dyn);
+                strOffset = Utils.byte2Int(dyn.d_ptr);
+            } else if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_SYMTAB) {
+                System.out.println("systab:" + dyn);
+                symbolOffset = Utils.byte2Int(dyn.d_ptr);
+            } else if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_STRSZ) {
+                System.out.println("strsz:" + dyn);
+                strSize = Utils.byte2Int(dyn.d_val);
+            }
+        }
+
+        symbolStr = Utils.copyBytes(fileByteArys, strOffset, strSize);
+        //ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Ðµï¿½Symbol Name,×¢ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½Ð·Ö¸î£¬Cï¿½Ðµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½
+        /*String[] strAry = new String(symbolStr).split(new String(new byte[]{0}));
+        for(String str : strAry){
 			System.out.println(str);
 		}*/
-		
-		for(elf32_dyn dyn : type_32.dynList){
-			if(Utils.byte2Int(dyn.d_tag) == ElfType32.DT_HASH){
-				//ÕâÀïµÄÂß¼­ÓÐµãÈÆ
-				/**
-				 * ¸ù¾ÝhashÖµ£¬ÕÒµ½ÏÂ±êhash % nbucketsµÄbucket£»¸ù¾ÝbucketÖÐµÄÖµ£¬¶ÁÈ¡.dynsymÖÐµÄ¶ÔÓ¦Ë÷ÒýµÄElf32_Sym·ûºÅ£»
-				 * ´Ó·ûºÅµÄst_nameËùÒÔÕÒµ½ÔÚ.dynstrÖÐ¶ÔÓ¦µÄ×Ö·û´®Óëº¯ÊýÃû½øÐÐ±È½Ï¡£Èô²»µÈ£¬Ôò¸ù¾Ýchain[hash % nbuckets]ÕÒÏÂÒ»¸öElf32_Sym·ûºÅ£¬
-				 * Ö±µ½ÕÒµ½»òÕßchainÖÕÖ¹ÎªÖ¹¡£ÕâÀïÐðÊöµÃÓÐÐ©¸´ÔÓ£¬Ö±½ÓÉÏ´úÂë¡£
-					for(i = bucket[funHash % nbucket]; i != 0; i = chain[i]){
-					  if(strcmp(dynstr + (funSym + i)->st_name, funcName) == 0){
-					    flag = 0;
-					    break;
-					  }
-					}
-				 */
-				int nbucket = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset, 4));
-				int nchian = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset+4, 4));
-				int hash = (int)elfhash(funcName.getBytes());
-				hash = (hash % nbucket);
-				//ÕâÀïµÄ8ÊÇ¶ÁÈ¡nbucketºÍnchianµÄÁ½¸öÖµ
-				funcIndex = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset+hash*4 + 8, 4));
-				System.out.println("nbucket:"+nbucket+",hash:"+hash+",funcIndex:"+funcIndex+",chian:"+nchian);
-				System.out.println("sym:"+Utils.bytes2HexString(Utils.int2Byte(symbolOffset)));
-				System.out.println("hash:"+Utils.bytes2HexString(Utils.int2Byte(dynHashOffset)));
-				
-				byte[] des = new byte[symbolSize];
-				System.arraycopy(fileByteArys, symbolOffset+funcIndex*symbolSize, des, 0, symbolSize);
-				Elf32_Sym sym = parseSymbolTable(des);
-				System.out.println("sym:"+sym);
-				boolean isFindFunc = Utils.isEqualByteAry(symbolStr, Utils.byte2Int(sym.st_name), funcName);
-				if(isFindFunc){
-					System.out.println("find func....");
-					return;
-				}
-				
-				while(true){
-					/**
-					 *  lseek(fd, dyn_hash + 4 * (2 + nbucket + funIndex), SEEK_SET);
-						if(read(fd, &funIndex, 4) != 4){
-						  puts("Read funIndex failed\n");
-						  goto _error;
-						}
-					 */
-					//System.out.println("dyHash:"+Utils.bytes2HexString(Utils.int2Byte(dynHashOffset))+",nbucket:"+nbucket+",funIndex:"+funcIndex);
-					funcIndex = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset+4*(2+nbucket+funcIndex), 4));
-					System.out.println("funcIndex:"+funcIndex);
-					
-					System.arraycopy(fileByteArys, symbolOffset+funcIndex*symbolSize, des, 0, symbolSize);
-					sym = parseSymbolTable(des);
-					
-					isFindFunc = Utils.isEqualByteAry(symbolStr, Utils.byte2Int(sym.st_name), funcName);
-					if(isFindFunc){
-						System.out.println("find func...");
-						int funcSize = Utils.byte2Int(sym.st_size);
-						int funcOffset = Utils.byte2Int(sym.st_value);
-						System.out.println("size:"+funcSize+",funcOffset:"+funcOffset);
-						//½øÐÐÄ¿±êº¯Êý´úÂë²¿·Ö½øÐÐ¼ÓÃÜ
-						//ÕâÀïÐèÒª×¢ÒâµÄÊÇ´ÓfuncOffset-1µÄÎ»ÖÃ¿ªÊ¼
-						byte[] funcAry = Utils.copyBytes(fileByteArys, funcOffset-1, funcSize);
-						for(int i=0;i<funcAry.length-1;i++){
-							funcAry[i] = (byte)(funcAry[i] ^ 0xFF);
-						}
-						Utils.replaceByteAry(fileByteArys, funcOffset-1, funcAry);
-						break;
-					}
-				}
-				break;
-			}
-			
-		}
-		
-	}
-	
-	private static elf32_dyn parseDynamic(byte[] src){
-		elf32_dyn dyn = new elf32_dyn();
-		dyn.d_tag = Utils.copyBytes(src, 0, 4);
-		dyn.d_ptr = Utils.copyBytes(src, 4, 4);
-		dyn.d_val = Utils.copyBytes(src, 4, 4);
-		return dyn;
-	}
-	
-	private static void parseSo(byte[] fileByteArys){
-		//¶ÁÈ¡Í·²¿ÄÚÈÝ
-		//System.out.println("+++++++++++++++++++Elf Header+++++++++++++++++");
-		parseHeader(fileByteArys, 0);
-		//System.out.println("header:\n"+type_32.hdr);
 
-		//¶ÁÈ¡³ÌÐòÍ·ÐÅÏ¢
-		//System.out.println();
-		//System.out.println("+++++++++++++++++++Program Header+++++++++++++++++");
-		int p_header_offset = Utils.byte2Int(type_32.hdr.e_phoff);
-		parseProgramHeaderList(fileByteArys, p_header_offset);
-		//type_32.printPhdrList();
+        for (elf32_dyn dyn : type_32.dynList) {
+            if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_HASH) {
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½
+                /**
+                 * ï¿½ï¿½ï¿½ï¿½hashÖµï¿½ï¿½ï¿½Òµï¿½ï¿½Â±ï¿½hash % nbucketsï¿½ï¿½bucketï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bucketï¿½Ðµï¿½Öµï¿½ï¿½ï¿½ï¿½È¡.dynsymï¿½ÐµÄ¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Elf32_Symï¿½ï¿½ï¿½Å£ï¿½
+                 * ï¿½Ó·ï¿½ï¿½Åµï¿½st_nameï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½.dynstrï¿½Ð¶ï¿½Ó¦ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ëº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±È½Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½chain[hash % nbuckets]ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Elf32_Symï¿½ï¿½ï¿½Å£ï¿½
+                 * Ö±ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½chainï¿½ï¿½Ö¹ÎªÖ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½Ó£ï¿½Ö±ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ë¡£
+                 for(i = bucket[funHash % nbucket]; i != 0; i = chain[i]){
+                 if(strcmp(dynstr + (funSym + i)->st_name, funcName) == 0){
+                 flag = 0;
+                 break;
+                 }
+                 }
+                 */
+                int nbucket = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset, 4));
+                int nchian = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset + 4, 4));
+                int hash = (int) elfhash(funcName.getBytes());
+                hash = (hash % nbucket);
+                //ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½Ç¶ï¿½È¡nbucketï¿½ï¿½nchianï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+                funcIndex = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset + hash * 4 + 8, 4));
+                System.out.println("nbucket:" + nbucket + ",hash:" + hash + ",funcIndex:" + funcIndex + ",chian:" + nchian);
+                System.out.println("sym:" + Utils.bytes2HexString(Utils.int2Byte(symbolOffset)));
+                System.out.println("hash:" + Utils.bytes2HexString(Utils.int2Byte(dynHashOffset)));
 
-		//¶ÁÈ¡¶ÎÍ·ÐÅÏ¢
-		//System.out.println();
-		//System.out.println("+++++++++++++++++++Section Header++++++++++++++++++");
-		int s_header_offset = Utils.byte2Int(type_32.hdr.e_shoff);
-		parseSectionHeaderList(fileByteArys, s_header_offset);
-		//type_32.printShdrList();
-		
-		//ÕâÖÖ·½Ê½»ñÈ¡ËùÓÐµÄSectionµÄname
-		/*byte[] names = Utils.copyBytes(fileByteArys, offset, size);
+                byte[] des = new byte[symbolSize];
+                System.arraycopy(fileByteArys, symbolOffset + funcIndex * symbolSize, des, 0, symbolSize);
+                Elf32_Sym sym = parseSymbolTable(des);
+                System.out.println("sym:" + sym);
+                boolean isFindFunc = Utils.isEqualByteAry(symbolStr, Utils.byte2Int(sym.st_name), funcName);
+                if (isFindFunc) {
+                    System.out.println("find func....");
+                    return;
+                }
+
+                while (true) {
+                    /**
+                     *  lseek(fd, dyn_hash + 4 * (2 + nbucket + funIndex), SEEK_SET);
+                     if(read(fd, &funIndex, 4) != 4){
+                     puts("Read funIndex failed\n");
+                     goto _error;
+                     }
+                     */
+                    //System.out.println("dyHash:"+Utils.bytes2HexString(Utils.int2Byte(dynHashOffset))+",nbucket:"+nbucket+",funIndex:"+funcIndex);
+                    funcIndex = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset + 4 * (2 + nbucket + funcIndex), 4));
+                    System.out.println("funcIndex:" + funcIndex);
+
+                    System.arraycopy(fileByteArys, symbolOffset + funcIndex * symbolSize, des, 0, symbolSize);
+                    sym = parseSymbolTable(des);
+
+                    isFindFunc = Utils.isEqualByteAry(symbolStr, Utils.byte2Int(sym.st_name), funcName);
+                    if (isFindFunc) {
+                        System.out.println("find func...");
+                        int funcSize = Utils.byte2Int(sym.st_size);
+                        int funcOffset = Utils.byte2Int(sym.st_value);
+                        System.out.println("size:" + funcSize + ",funcOffset:" + funcOffset);
+                        //ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½êº¯ï¿½ï¿½ï¿½ï¿½ï¿½ë²¿ï¿½Ö½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç´ï¿½funcOffset-1ï¿½ï¿½Î»ï¿½Ã¿ï¿½Ê¼
+                        byte[] funcAry = Utils.copyBytes(fileByteArys, funcOffset - 1, funcSize);
+                        for (int i = 0; i < funcAry.length - 1; i++) {
+                            funcAry[i] = (byte) (funcAry[i] ^ 0xFF);
+                        }
+                        Utils.replaceByteAry(fileByteArys, funcOffset - 1, funcAry);
+                        break;
+                    }
+                }
+                break;
+            }
+
+        }
+
+    }
+
+    private static elf32_dyn parseDynamic(byte[] src) {
+        elf32_dyn dyn = new elf32_dyn();
+        dyn.d_tag = Utils.copyBytes(src, 0, 4);
+        dyn.d_ptr = Utils.copyBytes(src, 4, 4);
+        dyn.d_val = Utils.copyBytes(src, 4, 4);
+        return dyn;
+    }
+
+    private static void parseSo(byte[] fileByteArys) {
+        //ï¿½ï¿½È¡Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //System.out.println("+++++++++++++++++++Elf Header+++++++++++++++++");
+        parseHeader(fileByteArys, 0);
+        System.out.println("header:\n" + type_32.hdr.toString());
+
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ï¢
+        //System.out.println();
+        //System.out.println("+++++++++++++++++++Program Header+++++++++++++++++");
+        int p_header_offset = Utils.byte2Int(type_32.hdr.e_phoff);
+        parseProgramHeaderList(fileByteArys, p_header_offset);
+        type_32.printPhdrList();
+
+        //ï¿½ï¿½È¡ï¿½ï¿½Í·ï¿½ï¿½Ï¢
+        //System.out.println();
+        //System.out.println("+++++++++++++++++++Section Header++++++++++++++++++");
+        int s_header_offset = Utils.byte2Int(type_32.hdr.e_shoff);
+        parseSectionHeaderList(fileByteArys, s_header_offset);
+//        type_32.printShdrList();
+
+        //ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ðµï¿½Sectionï¿½ï¿½name
+        /*byte[] names = Utils.copyBytes(fileByteArys, offset, size);
 		String str = new String(names);
-		byte NULL = 0;//×Ö·û´®µÄ½áÊø·û
+		byte NULL = 0;//ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½
 		StringTokenizer st = new StringTokenizer(str, new String(new byte[]{NULL}));
 		System.out.println( "Token Total: " + st.countTokens() );
 		while(st.hasMoreElements()){
@@ -195,12 +195,12 @@ public class EncodeFunc {
 		}
 		System.out.println("");*/
 
-		//¶ÁÈ¡·ûºÅ±íÐÅÏ¢(Symbol Table)
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½Ï¢(Symbol Table)
 		/*System.out.println();
 		System.out.println("+++++++++++++++++++Symbol Table++++++++++++++++++");
-		//ÕâÀïÐèÒª×¢ÒâµÄÊÇ£ºÔÚElf±íÖÐÃ»ÓÐÕÒµ½SymbolTableµÄÊýÄ¿£¬µ«ÊÇÎÒÃÇ×ÐÏ¸¹Û²ìSectionÖÐµÄType=DYNSYM¶ÎµÄÐÅÏ¢¿ÉÒÔµÃµ½£¬Õâ¸ö¶ÎµÄ´óÐ¡ºÍÆ«ÒÆµØÖ·£¬¶øSymbolTableµÄ½á¹¹´óÐ¡ÊÇ¹Ì¶¨µÄ16¸ö×Ö½Ú
-		//ÄÇÃ´ÕâÀïµÄÊýÄ¿=´óÐ¡/½á¹¹´óÐ¡
-		//Ê×ÏÈÔÚSectionHeaderÖÐ²éÕÒµ½dynsym¶ÎµÄÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½Elfï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½SymbolTableï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½Û²ï¿½Sectionï¿½Ðµï¿½Type=DYNSYMï¿½Îµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ÔµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎµÄ´ï¿½Ð¡ï¿½ï¿½Æ«ï¿½Æµï¿½Ö·ï¿½ï¿½ï¿½ï¿½SymbolTableï¿½Ä½á¹¹ï¿½ï¿½Ð¡ï¿½Ç¹Ì¶ï¿½ï¿½ï¿½16ï¿½ï¿½ï¿½Ö½ï¿½
+		//ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿=ï¿½ï¿½Ð¡/ï¿½á¹¹ï¿½ï¿½Ð¡
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SectionHeaderï¿½Ð²ï¿½ï¿½Òµï¿½dynsymï¿½Îµï¿½ï¿½ï¿½Ï¢
 		int offset_sym = 0;
 		int total_sym = 0;
 		for(elf32_shdr shdr : type_32.shdrList){
@@ -215,13 +215,13 @@ public class EncodeFunc {
 		parseSymbolTableList(fileByteArys, num_sym, offset_sym);
 		type_32.printSymList();*/
 
-		/*//¶ÁÈ¡×Ö·û´®±íÐÅÏ¢(String Table)
+		/*//ï¿½ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢(String Table)
 		System.out.println();
 		System.out.println("+++++++++++++++++++Symbol Table++++++++++++++++++");
-		//ÕâÀïÐèÒª×¢ÒâµÄÊÇ£ºÔÚElf±íÖÐÃ»ÓÐÕÒµ½StringTableµÄÊýÄ¿£¬µ«ÊÇÎÒÃÇ×ÐÏ¸¹Û²ìSectionÖÐµÄType=STRTAB¶ÎµÄÐÅÏ¢£¬¿ÉÒÔµÃµ½£¬Õâ¸ö¶ÎµÄ´óÐ¡ºÍÆ«ÒÆµØÖ·£¬µ«ÊÇÎÒÃÇÕâÊ±ºòÎÒÃÇ²»ÖªµÀ×Ö·û´®µÄ´óÐ¡£¬ËùÒÔ¾Í»ñÈ¡²»µ½ÊýÄ¿ÁË
-		//ÕâÀïÎÒÃÇ¿ÉÒÔ²é¿´Section½á¹¹ÖÐµÄname×Ö¶Î£º±íÊ¾Æ«ÒÆÖµ£¬ÄÇÃ´ÎÒÃÇ¿ÉÒÔÍ¨¹ýÕâ¸öÖµÀ´»ñÈ¡×Ö·û´®µÄ´óÐ¡
-		//¿ÉÒÔÕâÃ´Àí½â£ºµ±Ç°¶ÎµÄnameÖµ ¼õÈ¥ ÉÏÒ»¶ÎµÄnameµÄÖµ = (ÉÏÒ»¶ÎµÄname×Ö·û´®µÄ³¤¶È)
-		//Ê×ÏÈ»ñÈ¡Ã¿¸ö¶ÎµÄnameµÄ×Ö·û´®´óÐ¡
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½Elfï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½StringTableï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½Û²ï¿½Sectionï¿½Ðµï¿½Type=STRTABï¿½Îµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ÔµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎµÄ´ï¿½Ð¡ï¿½ï¿½Æ«ï¿½Æµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½Öªï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Ô¾Í»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ô²é¿´Sectionï¿½á¹¹ï¿½Ðµï¿½nameï¿½Ö¶Î£ï¿½ï¿½ï¿½Ê¾Æ«ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½â£ºï¿½ï¿½Ç°ï¿½Îµï¿½nameÖµ ï¿½ï¿½È¥ ï¿½ï¿½Ò»ï¿½Îµï¿½nameï¿½ï¿½Öµ = (ï¿½ï¿½Ò»ï¿½Îµï¿½nameï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½)
+		//ï¿½ï¿½ï¿½È»ï¿½È¡Ã¿ï¿½ï¿½ï¿½Îµï¿½nameï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
 		int prename_len = 0;
 		int[] lens = new int[type_32.shdrList.size()];
 		int total = 0;
@@ -235,7 +235,7 @@ public class EncodeFunc {
 				total += lens[i];
 				System.out.println("total:"+total);
 				prename_len = curname_offset;
-				//ÕâÀïÐèÒª×¢ÒâµÄÊÇ£¬×îºóÒ»¸ö×Ö·û´®µÄ³¤¶È£¬ÐèÒªÓÃ×Ü³¤¶È¼õÈ¥Ç°ÃæµÄ³¤¶È×ÜºÍÀ´»ñÈ¡µ½
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ü³ï¿½ï¿½È¼ï¿½È¥Ç°ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½
 				if(i == (lens.length - 1)){
 					System.out.println("size:"+Utils.byte2Int(type_32.shdrList.get(i).sh_size));
 					lens[i] = Utils.byte2Int(type_32.shdrList.get(i).sh_size) - total - 1;
@@ -245,190 +245,193 @@ public class EncodeFunc {
 		for(int i=0;i<lens.length;i++){
 			System.out.println("len:"+lens[i]);
 		}
-		//ÉÏÃæµÄÄÇ¸ö·½·¨²»ºÃ£¬ÎÒÃÇ·¢ÏÖStringTableÖÐµÄÃ¿¸ö×Ö·û´®½áÊø¶¼»áÓÐÒ»¸ö00(´«ËµÖÐµÄ×Ö·û´®½áÊø·û)£¬ÄÇÃ´ÎÒÃÇÖ»ÒªÖªµÀStringTableµÄ¿ªÊ¼Î»ÖÃ£¬È»ºó¾Í¿ÉÒÔ¶ÁÈ¡µ½Ã¿¸ö×Ö·û´®µÄÖµÁË
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½StringTableï¿½Ðµï¿½Ã¿ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½00(ï¿½ï¿½Ëµï¿½Ðµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Ö»ÒªÖªï¿½ï¿½StringTableï¿½Ä¿ï¿½Ê¼Î»ï¿½Ã£ï¿½È»ï¿½ï¿½Í¿ï¿½ï¿½Ô¶ï¿½È¡ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½
        */
-	}
-	
-	/**
-	 * ½âÎöElfµÄÍ·²¿ÐÅÏ¢
-	 * @param header
-	 */
-	private static void  parseHeader(byte[] header, int offset){
-		if(header == null){
-			System.out.println("header is null");
-			return;
-		}
-		/**
-		 *  public byte[] e_ident = new byte[16];
-			public short e_type;
-			public short e_machine;
-			public int e_version;
-			public int e_entry;
-			public int e_phoff;
-			public int e_shoff;
-			public int e_flags;
-			public short e_ehsize;
-			public short e_phentsize;
-			public short e_phnum;
-			public short e_shentsize;
-			public short e_shnum;
-			public short e_shstrndx;
-		 */
-		type_32.hdr.e_ident = Utils.copyBytes(header, 0, 16);//Ä§Êý
-		type_32.hdr.e_type = Utils.copyBytes(header, 16, 2);
-		type_32.hdr.e_machine = Utils.copyBytes(header, 18, 2);
-		type_32.hdr.e_version = Utils.copyBytes(header, 20, 4);
-		type_32.hdr.e_entry = Utils.copyBytes(header, 24, 4);
-		type_32.hdr.e_phoff = Utils.copyBytes(header, 28, 4);
-		type_32.hdr.e_shoff = Utils.copyBytes(header, 32, 4);
-		type_32.hdr.e_flags = Utils.copyBytes(header, 36, 4);
-		type_32.hdr.e_ehsize = Utils.copyBytes(header, 40, 2);
-		type_32.hdr.e_phentsize = Utils.copyBytes(header, 42, 2);
-		type_32.hdr.e_phnum = Utils.copyBytes(header, 44,2);
-		type_32.hdr.e_shentsize = Utils.copyBytes(header, 46,2);
-		type_32.hdr.e_shnum = Utils.copyBytes(header, 48, 2);
-		type_32.hdr.e_shstrndx = Utils.copyBytes(header, 50, 2);
-	}
-	
-	/**
-	 * ½âÎö³ÌÐòÍ·ÐÅÏ¢
-	 * @param header
-	 */
-	public static void parseProgramHeaderList(byte[] header, int offset){
-		int header_size = 32;//32¸ö×Ö½Ú
-		int header_count = Utils.byte2Short(type_32.hdr.e_phnum);//Í·²¿µÄ¸öÊý
-		byte[] des = new byte[header_size];
-		for(int i=0;i<header_count;i++){
-			System.arraycopy(header, i*header_size + offset, des, 0, header_size);
-			type_32.phdrList.add(parseProgramHeader(des));
-		}
-	}
-	
-	private static elf32_phdr parseProgramHeader(byte[] header){
-		/**
-		 *  public int p_type;
-			public int p_offset;
-			public int p_vaddr;
-			public int p_paddr;
-			public int p_filesz;
-			public int p_memsz;
-			public int p_flags;
-			public int p_align;
-		 */
-		ElfType32.elf32_phdr phdr = new ElfType32.elf32_phdr();
-		phdr.p_type = Utils.copyBytes(header, 0, 4);
-		phdr.p_offset = Utils.copyBytes(header, 4, 4);
-		phdr.p_vaddr = Utils.copyBytes(header, 8, 4);
-		phdr.p_paddr = Utils.copyBytes(header, 12, 4);
-		phdr.p_filesz = Utils.copyBytes(header, 16, 4);
-		phdr.p_memsz = Utils.copyBytes(header, 20, 4);
-		phdr.p_flags = Utils.copyBytes(header, 24, 4);
-		phdr.p_align = Utils.copyBytes(header, 28, 4);
-		return phdr;
-		
-	}
-	
-	/**
-	 * ½âÎö¶ÎÍ·ÐÅÏ¢ÄÚÈÝ
-	 */
-	public static void parseSectionHeaderList(byte[] header, int offset){
-		int header_size = 40;//40¸ö×Ö½Ú
-		int header_count = Utils.byte2Short(type_32.hdr.e_shnum);//Í·²¿µÄ¸öÊý
-		byte[] des = new byte[header_size];
-		for(int i=0;i<header_count;i++){
-			System.arraycopy(header, i*header_size + offset, des, 0, header_size);
-			type_32.shdrList.add(parseSectionHeader(des));
-		}
-	}
-	
-	private static elf32_shdr parseSectionHeader(byte[] header){
-		ElfType32.elf32_shdr shdr = new ElfType32.elf32_shdr();
-		/**
-		 *  public byte[] sh_name = new byte[4];
-			public byte[] sh_type = new byte[4];
-			public byte[] sh_flags = new byte[4];
-			public byte[] sh_addr = new byte[4];
-			public byte[] sh_offset = new byte[4];
-			public byte[] sh_size = new byte[4];
-			public byte[] sh_link = new byte[4];
-			public byte[] sh_info = new byte[4];
-			public byte[] sh_addralign = new byte[4];
-			public byte[] sh_entsize = new byte[4];
-		 */
-		shdr.sh_name = Utils.copyBytes(header, 0, 4);
-		shdr.sh_type = Utils.copyBytes(header, 4, 4);
-		shdr.sh_flags = Utils.copyBytes(header, 8, 4);
-		shdr.sh_addr = Utils.copyBytes(header, 12, 4);
-		shdr.sh_offset = Utils.copyBytes(header, 16, 4);
-		shdr.sh_size = Utils.copyBytes(header, 20, 4);
-		shdr.sh_link = Utils.copyBytes(header, 24, 4);
-		shdr.sh_info = Utils.copyBytes(header, 28, 4);
-		shdr.sh_addralign = Utils.copyBytes(header, 32, 4);
-		shdr.sh_entsize = Utils.copyBytes(header, 36, 4);
-		return shdr;
-	}
-	
-	/**
-	 * ½âÎöSymbol TableÄÚÈÝ 
-	 */
-	public static void parseSymbolTableList(byte[] header, int header_count, int offset){
-		int header_size = 16;//16¸ö×Ö½Ú
-		byte[] des = new byte[header_size];
-		for(int i=0;i<header_count;i++){
-			System.arraycopy(header, i*header_size + offset, des, 0, header_size);
-			type_32.symList.add(parseSymbolTable(des));
-		}
-	}
-	
-	private static ElfType32.Elf32_Sym parseSymbolTable(byte[] header){
-		/**
-		 *  public byte[] st_name = new byte[4];
-			public byte[] st_value = new byte[4];
-			public byte[] st_size = new byte[4];
-			public byte st_info;
-			public byte st_other;
-			public byte[] st_shndx = new byte[2];
-		 */
-		Elf32_Sym sym = new Elf32_Sym();
-		sym.st_name = Utils.copyBytes(header, 0, 4);
-		sym.st_value = Utils.copyBytes(header, 4, 4);
-		sym.st_size = Utils.copyBytes(header, 8, 4);
-		sym.st_info = header[12];
-		//FIXME ÕâÀïÓÐÒ»¸öÎÊÌâ£¬¾ÍÊÇÕâ¸ö×Ö¶Î¶Á³öÀ´µÄÖµÊ¼ÖÕÊÇ0
-		sym.st_other = header[13];
-		sym.st_shndx = Utils.copyBytes(header, 14, 2);
-		return sym;
-	}
-	
-	/**
-	 *  //±ê×¼µÄhashº¯Êý
-		static unsigned elfhash(const char *_name)
-		{
-		    const unsigned char *name = (const unsigned char *) _name;
-		    unsigned h = 0, g;
-		
-		    while(*name) {
-		        h = (h << 4) + *name++;
-		        g = h & 0xf0000000;
-		        h ^= g;
-		        h ^= g >> 24;
-		    }
-		    return h;
-		}
-	 * @return
-	 */
-	private static long elfhash(byte[] name){
-		if(name == null || name.length == 0){
-			return -1;
-		}
-		long h=0,g;
-		for(int i=0;i<name.length;i++){
-			h = (h << 4) + name[i];
-			g = h & 0xf0000000;
-			h ^= g;
-			h ^= (g >> 24);
-		}
-		return h;
-	}
-	
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½Elfï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ï¢
+     *
+     * @param header
+     */
+    private static void parseHeader(byte[] header, int offset) {
+        if (header == null) {
+            System.out.println("header is null");
+            return;
+        }
+        /**
+         *  public byte[] e_ident = new byte[16];
+         public short e_type;
+         public short e_machine;
+         public int e_version;
+         public int e_entry;
+         public int e_phoff;
+         public int e_shoff;
+         public int e_flags;
+         public short e_ehsize;
+         public short e_phentsize;
+         public short e_phnum;
+         public short e_shentsize;
+         public short e_shnum;
+         public short e_shstrndx;
+         */
+        type_32.hdr.e_ident = Utils.copyBytes(header, 0, 16);//Ä§ï¿½ï¿½
+        type_32.hdr.e_type = Utils.copyBytes(header, 16, 2);
+        type_32.hdr.e_machine = Utils.copyBytes(header, 18, 2);
+        type_32.hdr.e_version = Utils.copyBytes(header, 20, 4);
+        type_32.hdr.e_entry = Utils.copyBytes(header, 24, 4);
+        type_32.hdr.e_phoff = Utils.copyBytes(header, 28, 4);
+        type_32.hdr.e_shoff = Utils.copyBytes(header, 32, 4);
+        type_32.hdr.e_flags = Utils.copyBytes(header, 36, 4);
+        type_32.hdr.e_ehsize = Utils.copyBytes(header, 40, 2);
+        type_32.hdr.e_phentsize = Utils.copyBytes(header, 42, 2);
+        type_32.hdr.e_phnum = Utils.copyBytes(header, 44, 2);
+        type_32.hdr.e_shentsize = Utils.copyBytes(header, 46, 2);
+        type_32.hdr.e_shnum = Utils.copyBytes(header, 48, 2);
+        type_32.hdr.e_shstrndx = Utils.copyBytes(header, 50, 2);
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ï¢
+     *
+     * @param header
+     */
+    public static void parseProgramHeaderList(byte[] header, int offset) {
+        int header_size = 32;//32å­—èŠ‚
+        int header_count = Utils.byte2Short(type_32.hdr.e_phnum);//Í·ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
+        byte[] des = new byte[header_size];
+        for (int i = 0; i < header_count; i++) {
+            System.arraycopy(header, i * header_size + offset, des, 0, header_size);
+            type_32.phdrList.add(parseProgramHeader(des));
+        }
+    }
+
+    private static elf32_phdr parseProgramHeader(byte[] header) {
+        /**
+         *  public int p_type;
+         public int p_offset;
+         public int p_vaddr;
+         public int p_paddr;
+         public int p_filesz;
+         public int p_memsz;
+         public int p_flags;
+         public int p_align;
+         */
+        ElfType32.elf32_phdr phdr = new ElfType32.elf32_phdr();
+        phdr.p_type = Utils.copyBytes(header, 0, 4);
+        phdr.p_offset = Utils.copyBytes(header, 4, 4);
+        phdr.p_vaddr = Utils.copyBytes(header, 8, 4);
+        phdr.p_paddr = Utils.copyBytes(header, 12, 4);
+        phdr.p_filesz = Utils.copyBytes(header, 16, 4);
+        phdr.p_memsz = Utils.copyBytes(header, 20, 4);
+        phdr.p_flags = Utils.copyBytes(header, 24, 4);
+        phdr.p_align = Utils.copyBytes(header, 28, 4);
+        return phdr;
+
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+     */
+    public static void parseSectionHeaderList(byte[] header, int offset) {
+        int header_size = 40;//40ï¿½ï¿½ï¿½Ö½ï¿½
+        int header_count = Utils.byte2Short(type_32.hdr.e_shnum);//Í·ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
+        byte[] des = new byte[header_size];
+        for (int i = 0; i < header_count; i++) {
+            System.arraycopy(header, i * header_size + offset, des, 0, header_size);
+            type_32.shdrList.add(parseSectionHeader(des));
+        }
+    }
+
+    private static elf32_shdr parseSectionHeader(byte[] header) {
+        ElfType32.elf32_shdr shdr = new ElfType32.elf32_shdr();
+        /**
+         *  public byte[] sh_name = new byte[4];
+         public byte[] sh_type = new byte[4];
+         public byte[] sh_flags = new byte[4];
+         public byte[] sh_addr = new byte[4];
+         public byte[] sh_offset = new byte[4];
+         public byte[] sh_size = new byte[4];
+         public byte[] sh_link = new byte[4];
+         public byte[] sh_info = new byte[4];
+         public byte[] sh_addralign = new byte[4];
+         public byte[] sh_entsize = new byte[4];
+         */
+        shdr.sh_name = Utils.copyBytes(header, 0, 4);
+        shdr.sh_type = Utils.copyBytes(header, 4, 4);
+        shdr.sh_flags = Utils.copyBytes(header, 8, 4);
+        shdr.sh_addr = Utils.copyBytes(header, 12, 4);
+        shdr.sh_offset = Utils.copyBytes(header, 16, 4);
+        shdr.sh_size = Utils.copyBytes(header, 20, 4);
+        shdr.sh_link = Utils.copyBytes(header, 24, 4);
+        shdr.sh_info = Utils.copyBytes(header, 28, 4);
+        shdr.sh_addralign = Utils.copyBytes(header, 32, 4);
+        shdr.sh_entsize = Utils.copyBytes(header, 36, 4);
+        return shdr;
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½Symbol Tableï¿½ï¿½ï¿½ï¿½
+     */
+    public static void parseSymbolTableList(byte[] header, int header_count, int offset) {
+        int header_size = 16;//16ï¿½ï¿½ï¿½Ö½ï¿½
+        byte[] des = new byte[header_size];
+        for (int i = 0; i < header_count; i++) {
+            System.arraycopy(header, i * header_size + offset, des, 0, header_size);
+            type_32.symList.add(parseSymbolTable(des));
+        }
+    }
+
+    private static ElfType32.Elf32_Sym parseSymbolTable(byte[] header) {
+        /**
+         *  public byte[] st_name = new byte[4];
+         public byte[] st_value = new byte[4];
+         public byte[] st_size = new byte[4];
+         public byte st_info;
+         public byte st_other;
+         public byte[] st_shndx = new byte[2];
+         */
+        Elf32_Sym sym = new Elf32_Sym();
+        sym.st_name = Utils.copyBytes(header, 0, 4);
+        sym.st_value = Utils.copyBytes(header, 4, 4);
+        sym.st_size = Utils.copyBytes(header, 8, 4);
+        sym.st_info = header[12];
+        //FIXME ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÊ¼ï¿½ï¿½ï¿½ï¿½0
+        sym.st_other = header[13];
+        sym.st_shndx = Utils.copyBytes(header, 14, 2);
+        return sym;
+    }
+
+    /**
+     * //ï¿½ï¿½×¼ï¿½ï¿½hashï¿½ï¿½ï¿½ï¿½
+     * static unsigned elfhash(const char *_name)
+     * {
+     * const unsigned char *name = (const unsigned char *) _name;
+     * unsigned h = 0, g;
+     * <p>
+     * while(*name) {
+     * h = (h << 4) + *name++;
+     * g = h & 0xf0000000;
+     * h ^= g;
+     * h ^= g >> 24;
+     * }
+     * return h;
+     * }
+     *
+     * @return
+     */
+    private static long elfhash(byte[] name) {
+        if (name == null || name.length == 0) {
+            return -1;
+        }
+        long h = 0, g;
+        for (int i = 0; i < name.length; i++) {
+            h = (h << 4) + name[i];
+            g = h & 0xf0000000;
+            h ^= g;
+            h ^= (g >> 24);
+        }
+        return h;
+    }
+
 }

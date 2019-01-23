@@ -1,0 +1,20 @@
+Executable : /Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake
+arguments : 
+-H/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app
+-B/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips
+-DANDROID_ABI=mips
+-DANDROID_PLATFORM=android-15
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/cmake/release/obj/mips
+-DCMAKE_BUILD_TYPE=Release
+-DANDROID_NDK=/Users/lishaowei/Library/Android/sdk/ndk-bundle
+-DCMAKE_CXX_FLAGS=
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_ANDROID_ARCH_ABI=mips
+-DCMAKE_SYSTEM_VERSION=15
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_ANDROID_NDK=/Users/lishaowei/Library/Android/sdk/ndk-bundle
+-DCMAKE_TOOLCHAIN_FILE=/Users/lishaowei/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-G Ninja
+-DCMAKE_MAKE_PROGRAM=/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
+jvmArgs : 
+

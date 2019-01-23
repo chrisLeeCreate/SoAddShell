@@ -1,0 +1,24 @@
+# ninja log v5
+0	116	1548159150	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+117	156	1548159151	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+0	110	1548159222	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+110	151	1548159222	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	181	1548159282	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+182	291	1548159282	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	162	1548159338	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+163	249	1548159338	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	140	1548159425	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+141	211	1548159425	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	121	1548159462	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+122	196	1548159462	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	128	1548159482	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+128	203	1548159482	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	136	1548159502	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+137	216	1548159502	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	207	1548229037	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+1	282	1548230968	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+282	395	1548230968	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+21	205	1548231465	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+205	282	1548231465	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f
+3	148	1548233793	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	720e26e9d83ac2d8
+148	272	1548233794	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so	5c10a8dd954d2b8f

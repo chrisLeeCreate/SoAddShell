@@ -1,0 +1,147 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/a27abcfef55177053d74fd22eacadd75/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/08bc0b978992a7169cef3a35181f170e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/92e392469d5fe21ca842378ba6ee547d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/812158beb3a6145174c350f2323a5e88/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/ce578819b5e17f84f673f4d6f4c61442/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/6caaabc4c70b80d2b0adcc4705d60aeb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/1da8a2d26ee1aad74c80dd50a1a937f3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7709f1c9413d1eddf003e64470e658cf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2c26ce410be77f8e15d2a070168c3fa4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/a62630c403dc53b2a336148bcb453b76/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/be5bbf3850e36f9f31bf6cc3f7aa026a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/d27308337075545db93263d584b43b7b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/5dc2064d895d2fd4a76b5c66e66cc2f1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/e2478644b26fba3226e8be81c1635694/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/376f5a66babed9699fd2c5d2bbdd80ea/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/ad9e0d663cfb361d3790afd47b56ed43/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/779933c0bb91468c5fa8bb90242ccce3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/4b442f4748c9d047d210cd9748181363/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/ea104e2591378cff5d267a46ab8c4fc4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/fb20989ea74277d9e95952368bbdf394/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/f38a53ae9a927d2f8f9f3eb83d6b5532/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/80967a2fedde1f9e01e9528483d45407/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2b3088f720c279ba18f8c13ec55bf2a5/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/bffe11d16338342226e8786c9e5a5cbb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/2be84f57a9dd823dda1fd849f86cc33d/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:3:5-37
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:4:5-28
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:8:5-22:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/376f5a66babed9699fd2c5d2bbdd80ea/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/376f5a66babed9699fd2c5d2bbdd80ea/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:11:9-41
+	android:icon
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:10:9-45
+	android:allowBackup
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:12:9-40
+activity#com.example.shelldemo2.MainActivity
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:13:9-21:20
+	android:label
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:15:13-45
+	android:name
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:14:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/a27abcfef55177053d74fd22eacadd75/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/a27abcfef55177053d74fd22eacadd75/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/08bc0b978992a7169cef3a35181f170e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/08bc0b978992a7169cef3a35181f170e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/92e392469d5fe21ca842378ba6ee547d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/92e392469d5fe21ca842378ba6ee547d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/812158beb3a6145174c350f2323a5e88/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/812158beb3a6145174c350f2323a5e88/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/ce578819b5e17f84f673f4d6f4c61442/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/ce578819b5e17f84f673f4d6f4c61442/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/6caaabc4c70b80d2b0adcc4705d60aeb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/6caaabc4c70b80d2b0adcc4705d60aeb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/1da8a2d26ee1aad74c80dd50a1a937f3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/1da8a2d26ee1aad74c80dd50a1a937f3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7709f1c9413d1eddf003e64470e658cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7709f1c9413d1eddf003e64470e658cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2c26ce410be77f8e15d2a070168c3fa4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2c26ce410be77f8e15d2a070168c3fa4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/a62630c403dc53b2a336148bcb453b76/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/a62630c403dc53b2a336148bcb453b76/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/be5bbf3850e36f9f31bf6cc3f7aa026a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/be5bbf3850e36f9f31bf6cc3f7aa026a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/d27308337075545db93263d584b43b7b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/d27308337075545db93263d584b43b7b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/5dc2064d895d2fd4a76b5c66e66cc2f1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/5dc2064d895d2fd4a76b5c66e66cc2f1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/e2478644b26fba3226e8be81c1635694/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/e2478644b26fba3226e8be81c1635694/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b95d113b1ee1ed099331bc04aedce591/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/376f5a66babed9699fd2c5d2bbdd80ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/376f5a66babed9699fd2c5d2bbdd80ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/ad9e0d663cfb361d3790afd47b56ed43/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/ad9e0d663cfb361d3790afd47b56ed43/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/779933c0bb91468c5fa8bb90242ccce3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/779933c0bb91468c5fa8bb90242ccce3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/4b442f4748c9d047d210cd9748181363/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/4b442f4748c9d047d210cd9748181363/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/ea104e2591378cff5d267a46ab8c4fc4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/ea104e2591378cff5d267a46ab8c4fc4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/fb20989ea74277d9e95952368bbdf394/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/fb20989ea74277d9e95952368bbdf394/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/f38a53ae9a927d2f8f9f3eb83d6b5532/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/f38a53ae9a927d2f8f9f3eb83d6b5532/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/80967a2fedde1f9e01e9528483d45407/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/80967a2fedde1f9e01e9528483d45407/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2b3088f720c279ba18f8c13ec55bf2a5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2b3088f720c279ba18f8c13ec55bf2a5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/bffe11d16338342226e8786c9e5a5cbb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/bffe11d16338342226e8786c9e5a5cbb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/2be84f57a9dd823dda1fd849f86cc33d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/lishaowei/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/2be84f57a9dd823dda1fd849f86cc33d/AndroidManifest.xml:20:5-44
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		ADDED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/AndroidManifest.xml

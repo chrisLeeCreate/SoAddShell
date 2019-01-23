@@ -1,0 +1,39 @@
+{
+  "stringTable": {
+    "0": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips64",
+    "1": "--target=mips64el-none-linux-android --gcc-toolchain=/Users/lishaowei/Library/Android/sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot -Ddemo_EXPORTS -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/mips64/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/mips64/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include/mips64el-linux-android -isystem /Users/lishaowei/Library/Android/sdk/ndk-bundle/sysroot/usr/include/mips64el-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fintegrated-as -Wa,--noexecstack -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/CMakeLists.txt",
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/../../../../Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips64 --target clean"
+  ],
+  "libraries": {
+    "demo-Release-mips64": {
+      "buildCommand": "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/release/mips64 --target demo",
+      "buildType": "release",
+      "toolchain": "1702301112",
+      "abi": "mips64",
+      "artifactName": "demo",
+      "files": [
+        {
+          "src": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/src/main/cpp/demo.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/cmake/release/obj/mips64/libdemo.so"
+    }
+  },
+  "toolchains": {
+    "1702301112": {
+      "cppCompilerExecutable": "/Users/lishaowei/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

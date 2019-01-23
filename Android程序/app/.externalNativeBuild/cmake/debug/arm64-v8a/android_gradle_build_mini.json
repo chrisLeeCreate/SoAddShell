@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/CMakeLists.txt",
+    "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/../../../../Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "demo-Debug-arm64-v8a": {
+      "artifactName": "demo",
+      "buildCommand": "/Users/lishaowei/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/.externalNativeBuild/cmake/debug/arm64-v8a --target demo",
+      "abi": "arm64-v8a",
+      "output": "/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/cmake/debug/obj/arm64-v8a/libdemo.so"
+    }
+  }
+}

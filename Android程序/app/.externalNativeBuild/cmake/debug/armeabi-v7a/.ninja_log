@@ -1,0 +1,11 @@
+# ninja log v5
+1	197	1548233794	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	98c4f99cb0919f9c
+198	298	1548233794	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so	141ac502a75a3291
+1	386	1548236330	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	98c4f99cb0919f9c
+386	486	1548236330	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so	141ac502a75a3291
+1	224	1548236466	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	98c4f99cb0919f9c
+224	340	1548236466	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so	141ac502a75a3291
+1	384	1548236580	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	98c4f99cb0919f9c
+384	503	1548236580	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so	141ac502a75a3291
+1	233	1548236634	CMakeFiles/demo.dir/src/main/cpp/demo.cpp.o	98c4f99cb0919f9c
+233	332	1548236634	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libdemo.so	141ac502a75a3291

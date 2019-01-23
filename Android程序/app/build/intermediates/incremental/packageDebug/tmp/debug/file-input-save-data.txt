@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Wed Jan 23 17:44:53 CST 2019
+1.base=/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/transforms/stripDebugSymbol/debug/0
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=NATIVE_RESOURCE
+0.path=classes.dex
+0.set=DEX
+0.base=/Users/lishaowei/testAndroidStudioDemo/testAndroidDemo2019/Android程序lsw/app/build/intermediates/transforms/dexMerger/debug/0
+1.path=lib/armeabi-v7a/libdemo.so
