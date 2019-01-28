@@ -7,10 +7,12 @@ import com.jiangwei.encodefunc.ElfType32.elf32_shdr;
 
 public class EncodeFunc {
 
-    private static String[] funcNameList = {"Java_com_tal_xes_app_common_utils_JNIUtil_getKey"
-            , "Java_com_tal_xes_app_common_utils_JNIUtil_getRsaKey"
-            , "Java_com_tal_xes_app_common_utils_JNIUtil_hmac"
-            , "Java_com_xes_jazhanghui_activity_utils_SignatureUtils_isOwnerApp"};
+    private static String[] funcNameList = {
+            "Java_com_tal_xes_app_common_utils_JNIUtil_getKey",
+            "Java_com_tal_xes_app_common_utils_JNIUtil_getRsaKey",
+            "Java_com_tal_xes_app_common_utils_JNIUtil_hmac",
+            "Java_com_xes_jazhanghui_activity_utils_SignatureUtils_isOwnerApp"
+    };
 
     private static ElfType32 type_32 = new ElfType32();
 
@@ -30,8 +32,8 @@ public class EncodeFunc {
         parseSo(fileByteArys);
 
         for (int i = 0; i < funcNameList.length; i++) {
-            encodeFunc(fileByteArys, funcNameList[i]);
             System.out.println("funcName" + i + ": " + funcNameList[i]);
+            encodeFunc(fileByteArys, funcNameList[i]);
         }
 
         parseSo(fileByteArys);
