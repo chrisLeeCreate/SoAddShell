@@ -7,10 +7,10 @@ public class ElfType32 {
 	public elf32_rel rel;
 	public elf32_rela rela;
 	public ArrayList<Elf32_Sym> symList = new ArrayList<Elf32_Sym>();
-	public elf32_hdr hdr;//elfͷ����Ϣ
-	public ArrayList<elf32_phdr> phdrList = new ArrayList<elf32_phdr>();//���ܻ��ж������ͷ
-	public ArrayList<elf32_shdr> shdrList = new ArrayList<elf32_shdr>();//���ܻ��ж����ͷ
-	public ArrayList<elf32_strtb> strtbList = new ArrayList<elf32_strtb>();//���ܻ��ж���ַ���ֵ
+	public elf32_hdr hdr;//elf程序头
+	public ArrayList<elf32_phdr> phdrList = new ArrayList<elf32_phdr>();//可能会有多个程序头
+	public ArrayList<elf32_shdr> shdrList = new ArrayList<elf32_shdr>();//可能会有多个段头
+	public ArrayList<elf32_strtb> strtbList = new ArrayList<elf32_strtb>();//可能会有多个字符串值
 	public ArrayList<elf32_dyn> dynList = new ArrayList<elf32_dyn>();
 	
 	public ElfType32() {
@@ -108,18 +108,18 @@ public class ElfType32 {
 		}
 	}
 	
-	//Bind�ֶ�==��st_info
+	//Bind字段==》st_info
 	public static final int STB_LOCAL = 0;
 	public static final int STB_GLOBAL = 1;
 	public static final int STB_WEAK = 2;
-	//Type�ֶ�==��st_other
+	//Type字段==》st_other
 	public static final int STT_NOTYPE = 0;
 	public static final int STT_OBJECT = 1;
 	public static final int STT_FUNC = 2;
 	public static final int STT_SECTION = 3;
 	public static final int STT_FILE = 4;
 	/**
-	 * ������Ҫע����ǻ���Ҫ��һ��ת��
+	 * 这里需要注意的是 还需要做一次转换
 	 *  #define ELF_ST_BIND(x)	((x) >> 4)
 		#define ELF_ST_TYPE(x)	(((unsigned int) x) & 0xf)
 	 */

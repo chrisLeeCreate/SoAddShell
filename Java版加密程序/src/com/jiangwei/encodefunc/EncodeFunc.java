@@ -7,9 +7,9 @@ import com.jiangwei.encodefunc.ElfType32.elf32_shdr;
 
 public class EncodeFunc {
 
-    public static String funcName = "Java_com_example_shelldemo2_MainActivity_getString";
+    private static String funcName = "Java_com_example_shelldemo2_MainActivity_getString";
 
-    public static ElfType32 type_32 = new ElfType32();
+    private static ElfType32 type_32 = new ElfType32();
 
     public static void main(String[] args) {
 
@@ -20,9 +20,9 @@ public class EncodeFunc {
         }
 
         /**
-         * �Ƚ���so�ļ�
-         * Ȼ���ʼ��AddSection�е�һЩ��Ϣ
-         * �����AddSection
+         * 解析so文件
+         * 寻找目标方法并加密
+         *
          */
         parseSo(fileByteArys);
 
@@ -35,7 +35,7 @@ public class EncodeFunc {
     }
 
     private static void encodeFunc(byte[] fileByteArys) {
-        //Ѱ��Dynamic�ε�ƫ��ֵ�ʹ�С
+        //寻找Dynamic段的偏移值和大小
         int dy_offset = 0, dy_size = 0;
         for (elf32_phdr phdr : type_32.phdrList) {
             if (Utils.byte2Int(phdr.p_type) == ElfType32.PT_DYNAMIC) {
@@ -78,7 +78,7 @@ public class EncodeFunc {
         }
 
         symbolStr = Utils.copyBytes(fileByteArys, strOffset, strSize);
-        //��ӡ���е�Symbol Name,ע����0�����зָC�е��ַ���������0����β��
+        //打印所有的Symbol Name,注意用0来进行分割，C中的字符串都是用0做结尾的
         /*String[] strAry = new String(symbolStr).split(new String(new byte[]{0}));
         for(String str : strAry){
 			System.out.println(str);
@@ -86,11 +86,11 @@ public class EncodeFunc {
 
         for (elf32_dyn dyn : type_32.dynList) {
             if (Utils.byte2Int(dyn.d_tag) == ElfType32.DT_HASH) {
-                //������߼��е���
+                //这里的逻辑有点绕
                 /**
-                 * ����hashֵ���ҵ��±�hash % nbuckets��bucket������bucket�е�ֵ����ȡ.dynsym�еĶ�Ӧ������Elf32_Sym���ţ�
-                 * �ӷ��ŵ�st_name�����ҵ���.dynstr�ж�Ӧ���ַ����뺯�������бȽϡ������ȣ������chain[hash % nbuckets]����һ��Elf32_Sym���ţ�
-                 * ֱ���ҵ�����chain��ֹΪֹ��������������Щ���ӣ�ֱ���ϴ��롣
+                 * 根据hash值，找到下标hash % nbuckets的bucket；根据bucket中的值，读取.dynsym中的对应索引的Elf32_Sym符号；
+                 * 从符号的st_name所以找到在.dynstr中对应的字符串与函数名进行比较。若不等，则根据chain[hash % nbuckets]找下一个Elf32_Sym符号，
+                 * 直到找到或者chain终止为止。这里叙述得有些复杂，直接上代码。
                  for(i = bucket[funHash % nbucket]; i != 0; i = chain[i]){
                  if(strcmp(dynstr + (funSym + i)->st_name, funcName) == 0){
                  flag = 0;
@@ -102,7 +102,7 @@ public class EncodeFunc {
                 int nchian = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset + 4, 4));
                 int hash = (int) elfhash(funcName.getBytes());
                 hash = (hash % nbucket);
-                //�����8�Ƕ�ȡnbucket��nchian������ֵ
+                //这里的8是读取nbucket和nchian的两个值
                 funcIndex = Utils.byte2Int(Utils.copyBytes(fileByteArys, dynHashOffset + hash * 4 + 8, 4));
                 System.out.println("nbucket:" + nbucket + ",hash:" + hash + ",funcIndex:" + funcIndex + ",chian:" + nchian);
                 System.out.println("sym:" + Utils.bytes2HexString(Utils.int2Byte(symbolOffset)));
@@ -139,8 +139,8 @@ public class EncodeFunc {
                         int funcSize = Utils.byte2Int(sym.st_size);
                         int funcOffset = Utils.byte2Int(sym.st_value);
                         System.out.println("size:" + funcSize + ",funcOffset:" + funcOffset);
-                        //����Ŀ�꺯�����벿�ֽ��м���
-                        //������Ҫע����Ǵ�funcOffset-1��λ�ÿ�ʼ
+                        //进行目标函数代码部分进行加密
+                        //这里需要注意的是从funcOffset-1的位置开始
                         byte[] funcAry = Utils.copyBytes(fileByteArys, funcOffset - 1, funcSize);
                         for (int i = 0; i < funcAry.length - 1; i++) {
                             funcAry[i] = (byte) (funcAry[i] ^ 0xFF);
@@ -165,26 +165,26 @@ public class EncodeFunc {
     }
 
     private static void parseSo(byte[] fileByteArys) {
-        //��ȡͷ������
+        //解析Elf的头部信息
         //System.out.println("+++++++++++++++++++Elf Header+++++++++++++++++");
         parseHeader(fileByteArys, 0);
         System.out.println("header:\n" + type_32.hdr.toString());
 
-        //��ȡ����ͷ��Ϣ
+        //解析程序头信息
         //System.out.println();
         //System.out.println("+++++++++++++++++++Program Header+++++++++++++++++");
         int p_header_offset = Utils.byte2Int(type_32.hdr.e_phoff);
         parseProgramHeaderList(fileByteArys, p_header_offset);
         type_32.printPhdrList();
 
-        //��ȡ��ͷ��Ϣ
+        //解析段头信息
         //System.out.println();
         //System.out.println("+++++++++++++++++++Section Header++++++++++++++++++");
         int s_header_offset = Utils.byte2Int(type_32.hdr.e_shoff);
         parseSectionHeaderList(fileByteArys, s_header_offset);
 //        type_32.printShdrList();
 
-        //���ַ�ʽ��ȡ���е�Section��name
+        //
         /*byte[] names = Utils.copyBytes(fileByteArys, offset, size);
 		String str = new String(names);
 		byte NULL = 0;//�ַ����Ľ�����
@@ -250,7 +250,7 @@ public class EncodeFunc {
     }
 
     /**
-     * ����Elf��ͷ����Ϣ
+     * 解析elf的头部信息
      *
      * @param header
      */
@@ -292,13 +292,13 @@ public class EncodeFunc {
     }
 
     /**
-     * ��������ͷ��Ϣ
+     * 解析程序头信息
      *
      * @param header
      */
     public static void parseProgramHeaderList(byte[] header, int offset) {
         int header_size = 32;//32字节
-        int header_count = Utils.byte2Short(type_32.hdr.e_phnum);//ͷ���ĸ���
+        int header_count = Utils.byte2Short(type_32.hdr.e_phnum);//头部的个数
         byte[] des = new byte[header_size];
         for (int i = 0; i < header_count; i++) {
             System.arraycopy(header, i * header_size + offset, des, 0, header_size);
@@ -331,11 +331,11 @@ public class EncodeFunc {
     }
 
     /**
-     * ������ͷ��Ϣ����
+     * //解析段头信息
      */
     public static void parseSectionHeaderList(byte[] header, int offset) {
-        int header_size = 40;//40���ֽ�
-        int header_count = Utils.byte2Short(type_32.hdr.e_shnum);//ͷ���ĸ���
+        int header_size = 40;//40个字节
+        int header_count = Utils.byte2Short(type_32.hdr.e_shnum);//头部的个数
         byte[] des = new byte[header_size];
         for (int i = 0; i < header_count; i++) {
             System.arraycopy(header, i * header_size + offset, des, 0, header_size);
