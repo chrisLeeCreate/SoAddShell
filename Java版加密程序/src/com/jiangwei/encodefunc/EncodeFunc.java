@@ -9,7 +9,8 @@ public class EncodeFunc {
 
     private static String[] funcNameList = {"Java_com_tal_xes_app_common_utils_JNIUtil_getKey"
             , "Java_com_tal_xes_app_common_utils_JNIUtil_getRsaKey"
-            , "Java_com_tal_xes_app_common_utils_JNIUtil_hmac"};
+            , "Java_com_tal_xes_app_common_utils_JNIUtil_hmac"
+            , "Java_com_xes_jazhanghui_activity_utils_SignatureUtils_isOwnerApp"};
 
     private static ElfType32 type_32 = new ElfType32();
 
