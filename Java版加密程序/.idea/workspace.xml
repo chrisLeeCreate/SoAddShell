@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="175b059e-f596-4e71-8c69-c70a647a4464" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/so/libxessafes.so" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/com/jiangwei/encodefunc/EncodeFunc.class" afterPath="$PROJECT_DIR$/bin/com/jiangwei/encodefunc/EncodeFunc.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/so/libxessafe.so" afterPath="$PROJECT_DIR$/so/libxessafe.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jiangwei/encodefunc/EncodeFunc.java" afterPath="$PROJECT_DIR$/src/com/jiangwei/encodefunc/EncodeFunc.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -28,8 +25,8 @@
       <file leaf-file-name="EncodeFunc.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jiangwei/encodefunc/EncodeFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+            <state relative-caret-position="236">
+              <caret line="18" column="54" lean-forward="true" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -628,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jiangwei/encodefunc/EncodeFunc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+        <state relative-caret-position="236">
+          <caret line="18" column="54" lean-forward="true" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
           <folding />
         </state>
       </provider>
