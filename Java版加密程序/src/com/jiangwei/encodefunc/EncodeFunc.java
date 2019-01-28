@@ -7,13 +7,15 @@ import com.jiangwei.encodefunc.ElfType32.elf32_shdr;
 
 public class EncodeFunc {
 
-    private static String funcName = "Java_com_example_shelldemo2_MainActivity_getString";
+    private static String[] funcNameList = {"Java_com_tal_xes_app_common_utils_JNIUtil_getKey"
+            , "Java_com_tal_xes_app_common_utils_JNIUtil_getRsaKey"
+            , "Java_com_tal_xes_app_common_utils_JNIUtil_hmac"};
 
     private static ElfType32 type_32 = new ElfType32();
 
     public static void main(String[] args) {
 
-        byte[] fileByteArys = Utils.readFile("so/libdemo.so");
+        byte[] fileByteArys = Utils.readFile("so/libxessafe.so");
         if (fileByteArys == null) {
             System.out.println("read file byte failed...");
             return;
@@ -26,15 +28,18 @@ public class EncodeFunc {
          */
         parseSo(fileByteArys);
 
-        encodeFunc(fileByteArys);
+        for (int i = 0; i < funcNameList.length; i++) {
+            encodeFunc(fileByteArys, funcNameList[i]);
+            System.out.println("funcName" + i + ": " + funcNameList[i]);
+        }
 
         parseSo(fileByteArys);
 
-        Utils.saveFile("so/libdemos.so", fileByteArys);
+        Utils.saveFile("so/libxessafes.so", fileByteArys);
 
     }
 
-    private static void encodeFunc(byte[] fileByteArys) {
+    private static void encodeFunc(byte[] fileByteArys, String funcName) {
         //寻找Dynamic段的偏移值和大小
         int dy_offset = 0, dy_size = 0;
         for (elf32_phdr phdr : type_32.phdrList) {
@@ -186,7 +191,7 @@ public class EncodeFunc {
 
         //
         /*byte[] names = Utils.copyBytes(fileByteArys, offset, size);
-		String str = new String(names);
+        String str = new String(names);
 		byte NULL = 0;//�ַ����Ľ�����
 		StringTokenizer st = new StringTokenizer(str, new String(new byte[]{NULL}));
 		System.out.println( "Token Total: " + st.countTokens() );
@@ -196,8 +201,8 @@ public class EncodeFunc {
 		System.out.println("");*/
 
         //��ȡ���ű���Ϣ(Symbol Table)
-		/*System.out.println();
-		System.out.println("+++++++++++++++++++Symbol Table++++++++++++++++++");
+        /*System.out.println();
+        System.out.println("+++++++++++++++++++Symbol Table++++++++++++++++++");
 		//������Ҫע����ǣ���Elf����û���ҵ�SymbolTable����Ŀ������������ϸ�۲�Section�е�Type=DYNSYM�ε���Ϣ���Եõ�������εĴ�С��ƫ�Ƶ�ַ����SymbolTable�Ľṹ��С�ǹ̶���16���ֽ�
 		//��ô�������Ŀ=��С/�ṹ��С
 		//������SectionHeader�в��ҵ�dynsym�ε���Ϣ
@@ -216,7 +221,7 @@ public class EncodeFunc {
 		type_32.printSymList();*/
 
 		/*//��ȡ�ַ�������Ϣ(String Table)
-		System.out.println();
+        System.out.println();
 		System.out.println("+++++++++++++++++++Symbol Table++++++++++++++++++");
 		//������Ҫע����ǣ���Elf����û���ҵ�StringTable����Ŀ������������ϸ�۲�Section�е�Type=STRTAB�ε���Ϣ�����Եõ�������εĴ�С��ƫ�Ƶ�ַ������������ʱ�����ǲ�֪���ַ����Ĵ�С�����Ծͻ�ȡ������Ŀ��
 		//�������ǿ��Բ鿴Section�ṹ�е�name�ֶΣ���ʾƫ��ֵ����ô���ǿ���ͨ�����ֵ����ȡ�ַ����Ĵ�С
