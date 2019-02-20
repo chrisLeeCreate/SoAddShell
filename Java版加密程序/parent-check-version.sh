@@ -27,7 +27,7 @@ echo $version
 #判断版本号和commitId逻辑
 if [ "${commitId}" != "${commitIdOld}" ]
 then
-    if [ "${version}" == "${versionOld}" ]
+    if [ "${version}" \> "${versionOld}" ]
     then
         echo "有新的代码提交 需要增加versionCode"
         exit 1
