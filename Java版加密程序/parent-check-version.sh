@@ -8,12 +8,9 @@
 if [ $2 == "Release" ]
 then
 #上一次版本号和git提交commitid 
-{ # try
-    commitIdOld=$(awk 'NR==1{print}'  version.txt)
-    versionOld=$(awk 'NR==2{print}'  version.txt)
-} || { # catch
-    echo "init" > version.txt
-}
+commitIdOld=$(awk 'NR==1{print}'  version.txt)
+versionOld=$(awk 'NR==2{print}'  version.txt)
+
 
 #新的版本号和git提交commitId
 version=$1
@@ -27,7 +24,7 @@ echo $version
 #判断版本号和commitId逻辑
 if [ "${commitId}" != "${commitIdOld}" ]
 then
-    if [ "${version}" \> "${versionOld}" ]
+    if [ $version \< $versionOld -o $version == $versionOld ]
     then
         echo "有新的代码提交 需要增加versionCode"
         exit 1
